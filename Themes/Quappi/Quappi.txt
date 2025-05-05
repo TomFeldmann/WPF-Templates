@@ -1,0 +1,431 @@
+<!-- Colors -->
+<!-- Quappi-Theme: Contra: #754a8a, Pro: #50a1a1 Background: #4d594c Text: #E5EDF0-->
+<!-- https://coolors.co/1c342c-84af78-a9cd9e-435b4d-506f57-e5edf0 -->
+<SolidColorBrush x:Key="scbBackground" Color="#4d594c"/>
+<SolidColorBrush x:Key="scbSecondary" Color="#000000"/>
+<SolidColorBrush x:Key="scbThirdly" Color="#2e362d"/>
+<SolidColorBrush x:Key="scbAccent" Color="#d8e3d8"/>
+<SolidColorBrush x:Key="scbText" Color="#E5EDF0"/>
+<SolidColorBrush x:Key="scblighter" Color="#000000"/>
+<SolidColorBrush x:Key="scbQuaternary" Color="#3f4a3e"/>
+<SolidColorBrush x:Key="scbContra" Color="#754a8a"/>
+<SolidColorBrush x:Key="scbPro" Color="#50a1a1"/>
+
+<Color x:Key="colBackground">#4d594c</Color>
+<Color x:Key="colSecondary">#000000</Color>
+<Color x:Key="colThirdly">#2e362d</Color>
+<Color x:Key="colAccent">#d8e3d8</Color>
+<Color x:Key="colText">#E5EDF0</Color>
+<Color x:Key="collighter">#000000</Color>
+<Color x:Key="colQuaternary">#3f4a3e</Color>
+<Color x:Key="colContra">#754a8a</Color>
+<Color x:Key="colPro">#50a1a1</Color>
+
+<!-- MainBackground -->
+<LinearGradientBrush x:Key="lgbQuappiBackground" StartPoint="0,0" EndPoint="0,1"> 
+	<GradientStop Color="#3a5438" Offset="1.0" /> <!-- unten -->
+	<GradientStop Color="#31522f" Offset="0.92" />
+	<GradientStop Color="#4d594c" Offset="0.0" /> <!-- oben -->
+</LinearGradientBrush>
+
+<LinearGradientBrush x:Key="QuappiContraButtonBackground" StartPoint="0,0" EndPoint="1,0"> 
+	<GradientStop Color="#6b228f" Offset="1.0" />
+	<GradientStop Color="#5a2375" Offset="0.92" />
+	<GradientStop Color="#754a8a" Offset="0.0" />
+</LinearGradientBrush>
+<Style x:Key="QuappiContraButtonStyle" TargetType="{x:Type Button}">
+	<Setter Property="Button.Effect">
+		<Setter.Value>
+			<DropShadowEffect x:Name="ContraButtonShadow" Color="Black" Direction="320" ShadowDepth="3" BlurRadius="5" Opacity="0.5" />
+		</Setter.Value>
+	</Setter>
+	<Setter Property="Template">
+		<Setter.Value>
+			<ControlTemplate TargetType="{x:Type Button}">
+				<Grid TextElement.Foreground="{StaticResource scbText}" TextElement.FontWeight="DemiBold">
+					<Border Background="{StaticResource QuappiContraButtonBackground}" VerticalAlignment="Stretch" CornerRadius="2" HorizontalAlignment="Stretch"/>
+					<Border x:Name="BorderHover"  Opacity="0" Background="#543463" VerticalAlignment="Stretch" CornerRadius="2" HorizontalAlignment="Stretch"/>
+					<Border x:Name="BorderPressed"  Opacity="0" Background="#281630" VerticalAlignment="Stretch" CornerRadius="2" HorizontalAlignment="Stretch"/>
+					<ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="MainContent" />
+				</Grid>
+				<ControlTemplate.Triggers>
+					<Trigger Property="IsPressed" Value="True">
+						<Trigger.EnterActions>
+							<BeginStoryboard>
+								<Storyboard>
+									<DoubleAnimation Storyboard.TargetName="BorderPressed" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.2"/>
+								</Storyboard>
+							</BeginStoryboard>
+						</Trigger.EnterActions>
+						<Trigger.ExitActions>
+							<BeginStoryboard>
+								<Storyboard>
+									<DoubleAnimation Storyboard.TargetName="BorderPressed" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.2"/>
+								</Storyboard>
+							</BeginStoryboard>
+						</Trigger.ExitActions>
+					</Trigger>
+					<Trigger Property="IsMouseOver" Value="True">
+						<Trigger.EnterActions>
+							<BeginStoryboard>
+								<Storyboard>
+									<DoubleAnimation Storyboard.TargetName="BorderHover" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.1"/>
+								</Storyboard>
+							</BeginStoryboard>
+						</Trigger.EnterActions>
+						<Trigger.ExitActions>
+							<BeginStoryboard>
+								<Storyboard>
+									<DoubleAnimation Storyboard.TargetName="BorderHover" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.1"/>
+								</Storyboard>
+							</BeginStoryboard>
+						</Trigger.ExitActions>
+					</Trigger>
+				</ControlTemplate.Triggers>
+			</ControlTemplate>
+		</Setter.Value>
+	</Setter>
+</Style>
+
+<LinearGradientBrush x:Key="QuappiProButtonBackground" StartPoint="0,0" EndPoint="1,0"> 
+	<GradientStop Color="#34bfbf" Offset="1.0" />
+	<GradientStop Color="#21dbdb" Offset="0.92" />
+	<GradientStop Color="#50a1a1" Offset="0.0" />
+</LinearGradientBrush>
+<Style x:Key="QuappiProButtonStyle" TargetType="{x:Type Button}">
+	<Setter Property="Button.Effect">
+		<Setter.Value>
+			<DropShadowEffect x:Name="ProButtonShadow" Color="Black" Direction="320" ShadowDepth="3" BlurRadius="5" Opacity="0.5" />
+		</Setter.Value>
+	</Setter>
+	<Setter Property="Template">
+		<Setter.Value>
+			<ControlTemplate TargetType="{x:Type Button}">
+				<Grid TextElement.FontWeight="DemiBold">
+					<Border Background="{StaticResource QuappiProButtonBackground}" VerticalAlignment="Stretch" CornerRadius="2" HorizontalAlignment="Stretch"/>
+					<Border x:Name="BorderHover"  Opacity="0" Background="#43dede" VerticalAlignment="Stretch" CornerRadius="2" HorizontalAlignment="Stretch"/>
+					<Border x:Name="BorderPressed"  Opacity="0" Background="#0bdead" VerticalAlignment="Stretch" CornerRadius="2" HorizontalAlignment="Stretch"/>
+					<ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="MainContent" />
+				</Grid>
+				<ControlTemplate.Triggers>
+					<Trigger Property="IsPressed" Value="True">
+						<Trigger.EnterActions>
+							<BeginStoryboard>
+								<Storyboard>
+									<DoubleAnimation Storyboard.TargetName="BorderPressed" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.2"/>
+								</Storyboard>
+							</BeginStoryboard>
+						</Trigger.EnterActions>
+						<Trigger.ExitActions>
+							<BeginStoryboard>
+								<Storyboard>
+									<DoubleAnimation Storyboard.TargetName="BorderPressed" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.2"/>
+								</Storyboard>
+							</BeginStoryboard>
+						</Trigger.ExitActions>
+					</Trigger>
+					<Trigger Property="IsMouseOver" Value="True">
+						<Trigger.EnterActions>
+							<BeginStoryboard>
+								<Storyboard>
+									<DoubleAnimation Storyboard.TargetName="BorderHover" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.1"/>
+								</Storyboard>
+							</BeginStoryboard>
+						</Trigger.EnterActions>
+						<Trigger.ExitActions>
+							<BeginStoryboard>
+								<Storyboard>
+									<DoubleAnimation Storyboard.TargetName="BorderHover" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.1"/>
+								</Storyboard>
+							</BeginStoryboard>
+						</Trigger.ExitActions>
+					</Trigger>
+				</ControlTemplate.Triggers>
+			</ControlTemplate>
+		</Setter.Value>
+	</Setter>
+</Style>
+
+<!-- TextBox -->
+<Style x:Key="QuappiTextBox" TargetType="{x:Type TextBox}">
+	<Setter Property="Foreground" Value="{StaticResource scbText}"/>
+	<Setter Property="CaretBrush" Value="{StaticResource scbText}"/>
+	<Setter Property="SelectionBrush" Value="#50a1a1"/>
+	<Setter Property="TextBox.Effect">
+		<Setter.Value>
+			<DropShadowEffect Color="Black" Direction="320" ShadowDepth="3" BlurRadius="5" Opacity="0.5" />
+		</Setter.Value>
+	</Setter>
+	<Setter Property="Template">
+		<Setter.Value>
+			<ControlTemplate TargetType="{x:Type TextBoxBase}">
+				<Border x:Name="tbxborder" Background="{StaticResource scbQuaternary}" BorderBrush="{StaticResource scbAccent}" BorderThickness="1" SnapsToDevicePixels="True" CornerRadius="3" Padding="5,0,0,0">
+					<ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+				</Border>
+				<ControlTemplate.Triggers>
+					<Trigger Property="IsEnabled" Value="false">
+						<Setter TargetName="tbxborder" Property="Opacity" Value="0.56"/>
+					</Trigger>
+					<Trigger Property="IsMouseOver" Value="true">
+						<Setter TargetName="tbxborder" Property="BorderBrush" Value="White"/>
+						<Setter TargetName="tbxborder" Property="Background" Value="{StaticResource scbThirdly}"/>
+					</Trigger>
+					<Trigger Property="IsKeyboardFocused" Value="true">
+						<Setter TargetName="tbxborder" Property="BorderBrush" Value="White"/>
+						<Setter TargetName="tbxborder" Property="Background" Value="{StaticResource scbThirdly}"/>
+					</Trigger>
+				</ControlTemplate.Triggers>
+			</ControlTemplate>
+		</Setter.Value>
+	</Setter>
+</Style>
+
+
+<!-- Scrollviewer -->
+<LinearGradientBrush x:Key="QuappiScrollBarBackground" StartPoint="0,1" EndPoint="0,0"> 
+	<GradientStop Color="#50a1a1" Offset="1.0" />
+	<GradientStop Color="#4098a7" Offset="0.84" />
+	<GradientStop Color="#388eab" Offset="0.7" />
+	<GradientStop Color="#3b83ae" Offset="0.56" />
+	<GradientStop Color="#4876ac" Offset="0.42" />
+	<GradientStop Color="#5869a6" Offset="0.28" />
+	<GradientStop Color="#685a9b" Offset="0.14" />
+	<GradientStop Color="#754a8a" Offset="0.0" />
+</LinearGradientBrush>
+<SolidColorBrush x:Key="StandardBorderBrush" Color="#888" />
+	<SolidColorBrush x:Key="StandardBackgroundBrush" Color="Black" />
+	<SolidColorBrush x:Key="HoverBorderBrush" Color="#DDD" />
+	<SolidColorBrush x:Key="SelectedBackgroundBrush" Color="Gray" />
+	<SolidColorBrush x:Key="SelectedForegroundBrush" Color="White" />
+	<SolidColorBrush x:Key="DisabledForegroundBrush" Color="#888" />
+	<SolidColorBrush x:Key="GlyphBrush" Color="#444" />
+	<SolidColorBrush x:Key="NormalBrush" Color="#888" />
+	<SolidColorBrush x:Key="NormalBorderBrush" Color="#888" />
+	<SolidColorBrush x:Key="HorizontalNormalBrush" Color="#FF686868" />
+	<SolidColorBrush x:Key="HorizontalNormalBorderBrush" Color="#888" />
+
+<LinearGradientBrush x:Key="ListBoxBackgroundBrush" StartPoint="0,0" EndPoint="1,0.001">
+	<GradientBrush.GradientStops>
+		<GradientStopCollection>
+			<GradientStop Color="White" Offset="0.0" />
+			<GradientStop Color="White" Offset="0.6" />
+			<GradientStop Color="#DDDDDD" Offset="1.2"/>
+		</GradientStopCollection>
+	</GradientBrush.GradientStops>
+</LinearGradientBrush>
+<LinearGradientBrush x:Key="StandardBrush" StartPoint="0,0" EndPoint="0,1">
+	<GradientBrush.GradientStops>
+		<GradientStopCollection>
+			<GradientStop Color="#FFF" Offset="0.0"/>
+			<GradientStop Color="#CCC" Offset="1.0"/>
+		</GradientStopCollection>
+	</GradientBrush.GradientStops>
+</LinearGradientBrush>
+<LinearGradientBrush x:Key="PressedBrush" StartPoint="0,0" EndPoint="0,1">
+	<GradientBrush.GradientStops>
+		<GradientStopCollection>
+			<GradientStop Color="#BBB" Offset="0.0"/>
+			<GradientStop Color="#EEE" Offset="0.1"/>
+			<GradientStop Color="#EEE" Offset="0.9"/>
+			<GradientStop Color="#FFF" Offset="1.0"/>
+		</GradientStopCollection>
+	</GradientBrush.GradientStops>
+</LinearGradientBrush>
+
+<Style x:Key="ScrollBarLineButton" TargetType="{x:Type RepeatButton}">
+	<Setter Property="Visibility" Value="Hidden"/>
+	<Setter Property="SnapsToDevicePixels" Value="True"/>
+	<Setter Property="OverridesDefaultStyle" Value="true"/>
+	<Setter Property="Focusable" Value="false"/>
+	<Setter Property="Template">
+		<Setter.Value>
+			<ControlTemplate TargetType="{x:Type RepeatButton}">
+				<Border Name="Border" Margin="1" CornerRadius="2" Background="{StaticResource NormalBrush}" BorderBrush="{StaticResource NormalBorderBrush}" BorderThickness="1">
+					<Path HorizontalAlignment="Center" VerticalAlignment="Center" Fill="{StaticResource GlyphBrush}" Data="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}" />
+				</Border>
+				<ControlTemplate.Triggers>
+					<Trigger Property="IsPressed" Value="true">
+						<Setter TargetName="Border" Property="Background" Value="{StaticResource PressedBrush}" />
+					</Trigger>
+					<Trigger Property="IsEnabled" Value="false">
+						<Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+					</Trigger>
+				</ControlTemplate.Triggers>
+			</ControlTemplate>
+		</Setter.Value>
+	</Setter>
+</Style>
+<Style x:Key="ScrollBarPageButton" TargetType="{x:Type RepeatButton}">
+	<Setter Property="Visibility" Value="Hidden"/>
+	<Setter Property="SnapsToDevicePixels" Value="True"/>
+	<Setter Property="OverridesDefaultStyle" Value="true"/>
+	<Setter Property="IsTabStop" Value="false"/>
+	<Setter Property="Focusable" Value="false"/>
+	<Setter Property="Template">
+		<Setter.Value>
+			<ControlTemplate TargetType="{x:Type RepeatButton}">
+				<Border Background="Black" />
+			</ControlTemplate>
+		</Setter.Value>
+	</Setter>
+</Style>
+
+<Style x:Key="ScrollBarThumb" TargetType="{x:Type Thumb}">
+	<Setter Property="SnapsToDevicePixels" Value="True"/>
+	<Setter Property="OverridesDefaultStyle" Value="true"/>
+	<Setter Property="IsTabStop" Value="false"/>
+	<Setter Property="Focusable" Value="false"/>
+	<Setter Property="Thumb.Effect">
+		<Setter.Value>
+			<DropShadowEffect Color="Black" Direction="320" ShadowDepth="3" BlurRadius="5" Opacity="0.5" />
+		</Setter.Value>
+	</Setter>
+	<Setter Property="Template">
+		<Setter.Value>
+			<ControlTemplate TargetType="{x:Type Thumb}">
+				<Border CornerRadius="4" Background="{StaticResource QuappiScrollBarBackground}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0"  Width="8" Margin="8,0,-2,0"/>
+			</ControlTemplate>
+		</Setter.Value>
+	</Setter>
+</Style>
+
+<ControlTemplate x:Key="VerticalScrollBar" TargetType="{x:Type ScrollBar}">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition MaxHeight="0"/>
+			<RowDefinition Height="0.00001*"/>
+			<RowDefinition MaxHeight="0"/>
+		</Grid.RowDefinitions>
+		<Border Grid.RowSpan="3" CornerRadius="2" Background="Transparent" />
+<RepeatButton Grid.Row="0" Style="{StaticResource ScrollBarLineButton}" Height="18" Command="ScrollBar.LineUpCommand" Content="M 0 4 L 8 4 L 4 0 Z" />
+<Track Name="PART_Track" Grid.Row="1" IsDirectionReversed="true">
+	<Track.DecreaseRepeatButton>
+		<RepeatButton Style="{StaticResource ScrollBarPageButton}" Command="ScrollBar.PageUpCommand" />
+	</Track.DecreaseRepeatButton>
+	<Track.Thumb>
+		<Thumb Style="{StaticResource ScrollBarThumb}" Margin="1,0,1,0" Background="{StaticResource HorizontalNormalBrush}" BorderBrush="{StaticResource HorizontalNormalBorderBrush}" />
+	</Track.Thumb>
+	<Track.IncreaseRepeatButton>
+		<RepeatButton Style="{StaticResource ScrollBarPageButton}" Command="ScrollBar.PageDownCommand" />
+			</Track.IncreaseRepeatButton>
+		</Track>
+		<RepeatButton Grid.Row="3" Style="{StaticResource ScrollBarLineButton}" Height="18" Command="ScrollBar.LineDownCommand" Content="M 0 0 L 4 4 L 8 0 Z"/>
+	</Grid>
+</ControlTemplate>
+<ControlTemplate x:Key="HorizontalScrollBar" TargetType="{x:Type ScrollBar}">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition MaxWidth="18"/>
+			<ColumnDefinition Width="0.00001*"/>
+			<ColumnDefinition MaxWidth="18"/>
+		</Grid.ColumnDefinitions>
+		<Border Grid.ColumnSpan="3" CornerRadius="2" Background="#F0F0F0"/>
+		<RepeatButton Grid.Column="0"  Style="{StaticResource ScrollBarLineButton}" Width="18" Command="ScrollBar.LineLeftCommand" Content="M 4 0 L 4 8 L 0 4 Z" />
+		<Track Name="PART_Track" Grid.Column="1" IsDirectionReversed="False">
+			<Track.DecreaseRepeatButton>
+				<RepeatButton Style="{StaticResource ScrollBarPageButton}" Command="ScrollBar.PageLeftCommand" />
+			</Track.DecreaseRepeatButton>
+			<Track.Thumb>
+				<Thumb Style="{StaticResource ScrollBarThumb}" Margin="0,1,0,1" Background="{StaticResource NormalBrush}" BorderBrush="{StaticResource NormalBorderBrush}" />
+			</Track.Thumb>
+			<Track.IncreaseRepeatButton>
+				<RepeatButton Style="{StaticResource ScrollBarPageButton}" Command="ScrollBar.PageRightCommand" />
+			</Track.IncreaseRepeatButton>
+		</Track>
+		<RepeatButton Grid.Column="3" Style="{StaticResource ScrollBarLineButton}" Width="18" Command="ScrollBar.LineRightCommand" Content="M 0 0 L 4 4 L 0 8 Z"/>
+	</Grid>
+</ControlTemplate>
+<Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+	<Setter Property="SnapsToDevicePixels" Value="True"/>
+	<Setter Property="OverridesDefaultStyle" Value="true"/>
+	<Style.Triggers>
+		<Trigger Property="Orientation" Value="Horizontal">
+			<Setter Property="Width" Value="Auto"/>
+			<Setter Property="Height" Value="18" />
+			<Setter Property="Template" Value="{StaticResource HorizontalScrollBar}" />
+		</Trigger>
+		<Trigger Property="Orientation" Value="Vertical">
+			<Setter Property="Width" Value="18"/>
+			<Setter Property="Height" Value="Auto" />
+			<Setter Property="Template" Value="{StaticResource VerticalScrollBar}" />
+		</Trigger>
+	</Style.Triggers>
+</Style>
+
+<Style x:Key="QuappiScrollViewer" TargetType="{x:Type ScrollViewer}">
+	<Setter Property="OverridesDefaultStyle" Value="True"/>
+	<Setter Property="Template">
+		<Setter.Value>
+			<ControlTemplate TargetType="{x:Type ScrollViewer}">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition Width="Auto"/>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition/>
+						<RowDefinition Height="Auto"/>
+					</Grid.RowDefinitions>
+					<ScrollContentPresenter Grid.Column="0"/>
+					<ScrollBar Name="PART_VerticalScrollBar" Grid.Column="1" Value="{TemplateBinding VerticalOffset}" Maximum="{TemplateBinding ScrollableHeight}" ViewportSize="{TemplateBinding ViewportHeight}" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"/>
+					<ScrollBar Name="PART_HorizontalScrollBar" Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Value="{TemplateBinding HorizontalOffset}" Maximum="{TemplateBinding ScrollableWidth}" ViewportSize="{TemplateBinding ViewportWidth}" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"/>
+				</Grid>
+			</ControlTemplate>
+		</Setter.Value>
+	</Setter>
+</Style>
+
+
+
+<!-- CheckBox -->
+<Style TargetType="CheckBox" x:Key="TDRVUMCCheckBoxStyle">
+	<Setter Property="Focusable" Value="False"/>
+	<Setter Property="TextBox.Effect">
+					<Setter.Value>
+						<DropShadowEffect Color="Black" Direction="320" ShadowDepth="3" BlurRadius="5" Opacity="0.5" />
+					</Setter.Value>
+				</Setter>
+	<Setter Property="Template">
+		<Setter.Value>
+			<ControlTemplate TargetType="CheckBox">
+				<StackPanel Orientation="Horizontal">
+					<Border x:Name="Border"
+							Width="16" Height="16"
+							Background="{StaticResource QuappiContraButtonBackground}"
+							BorderBrush="{StaticResource scbText}"
+							BorderThickness="1"
+							Margin="0,0,8,0">
+						<Grid>
+						<Path x:Name="CheckMark"
+							  Visibility="Collapsed"
+							  Stroke="Black"
+							  StrokeThickness="2"
+							  Data="M 2 8 L 6 12 L 14 2"/>
+						<Path x:Name="UnCheckMark"
+							  Visibility="Visible"
+							  Stroke="{StaticResource scbText}"
+							  StrokeThickness="2"
+							  HorizontalAlignment="Center"
+							  VerticalAlignment="Center"
+							  Margin="-2,-1,0,0"
+							  Data="M 3,3 L 13,13 M 13,3 L 3,13"/>
+						</Grid>
+					</Border>
+					<ContentPresenter VerticalAlignment="Center" />
+				</StackPanel>
+				<ControlTemplate.Triggers>
+					<Trigger Property="IsChecked" Value="True">
+						<Setter TargetName="Border" Property="Background" Value="{StaticResource QuappiProButtonBackground}"/>
+						<Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+						<Setter TargetName="UnCheckMark" Property="Visibility" Value="collapsed"/>
+					</Trigger>
+					<Trigger Property="IsEnabled" Value="False">
+						<Setter TargetName="Border" Property="Background" Value="#FFECECEC"/>
+						<Setter TargetName="Border" Property="BorderBrush" Value="#FFBFBFBF"/>
+						<Setter Property="Foreground" Value="#FFBFBFBF"/>
+					</Trigger>
+				</ControlTemplate.Triggers>
+			</ControlTemplate>
+		</Setter.Value>
+	</Setter>
+</Style>
